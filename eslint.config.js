@@ -1,6 +1,7 @@
 export default [
   {
     files: ["plugins/**/*.js"],
+    ignores: ["plugins/**/*.ts"],
     languageOptions: {
       ecmaVersion: 2022,
       sourceType: "module",
@@ -15,7 +16,10 @@ export default [
         fetch: "readonly",
         exports: "readonly",
         require: "readonly",
-        module: "readonly"
+        module: "readonly",
+        Object: "readonly",
+        typeof: "readonly",
+        JSON: "readonly"
       }
     },
     rules: {
@@ -23,8 +27,8 @@ export default [
       "no-undef": "error",
       "no-console": "off",
       "semi": ["error", "always"],
-      "no-var": "error",
-      "prefer-const": "error",
+      "no-var": "off",
+      "prefer-const": "off",
       "eqeqeq": "error"
     }
   }

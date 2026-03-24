@@ -20,6 +20,12 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Build plugins
+        run: npm run build
+
+      - name: Typecheck plugins
+        run: npm run typecheck
+
       - name: Lint plugins
         run: npm run lint
 
@@ -45,17 +51,23 @@ jobs:
         with:
           node-version: '24'
 
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build plugins
+        run: npm run build
+
       - name: Generate registry.json from manifests
         run: node scripts/generate-registry.js
 
-      - name: Commit and push registry.json
+      - name: Commit built files and registry
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add -f registry.json
+          git add -f plugins/*/server/*.js plugins/*/client/*.js registry.json
           if git diff --cached --quiet; then
-            echo "registry.json is already up to date"
+            echo "No changes to commit"
           else
-            git commit -m "chore: auto-update registry.json from plugin manifests"
+            git commit -m "chore: auto-update built plugins and registry.json"
             git push
           fi

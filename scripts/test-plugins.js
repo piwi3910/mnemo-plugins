@@ -1,10 +1,12 @@
 #!/usr/bin/env node
 
 /**
- * Tests plugin JS files for basic correctness.
+ * Tests built plugin JS files for basic correctness.
+ *
+ * Expects plugins to be built first (npm run build).
  *
  * Checks:
- * 1. All JS files parse without syntax errors
+ * 1. All built JS files parse without syntax errors
  * 2. Server plugins export 'activate' and 'deactivate'
  * 3. Client plugins export 'activate'
  */

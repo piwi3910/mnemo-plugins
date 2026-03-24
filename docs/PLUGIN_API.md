@@ -10,10 +10,12 @@ Every plugin lives in its own directory under `plugins/`:
 plugins/my-plugin/
   manifest.json       # Required: plugin metadata
   server/
-    index.js          # Optional: server-side entry point (CommonJS)
+    index.ts          # Optional: server-side entry point (TypeScript, built to CJS)
   client/
-    index.js          # Optional: client-side entry point (ESM)
+    index.ts          # Optional: client-side entry point (TypeScript, built to ESM)
 ```
+
+Plugins are written in TypeScript. The build step (`npm run build`) compiles `.ts` files to `.js` using esbuild. Type definitions are available in `types/server.d.ts` and `types/client.d.ts`.
 
 A plugin must have at least one entry point (server, client, or both).
 
@@ -81,16 +83,18 @@ Each setting object has:
 
 ## Server-Side API
 
-Server plugins use CommonJS and must export `activate(api)` and `deactivate()`.
+Server plugins are written in TypeScript and must export `activate(api)` and `deactivate()`. They are compiled to CommonJS by esbuild.
 
-```javascript
-exports.activate = function (api) {
+```typescript
+import type { PluginAPI } from '../../../types/server';
+
+export function activate(api: PluginAPI): void {
   // Plugin initialization
-};
+}
 
-exports.deactivate = function () {
+export function deactivate(): void {
   // Cleanup (optional - PluginManager handles route/event removal)
-};
+}
 ```
 
 ### `api.notes`
@@ -184,14 +188,16 @@ Structured logging scoped to the plugin.
 
 ## Client-Side API
 
-Client plugins use ESM and must export an `activate(api)` function. A `deactivate()` export is recommended for cleanup.
+Client plugins are written in TypeScript and must export an `activate(api)` function. A `deactivate()` export is recommended for cleanup. They are compiled to ESM by esbuild.
 
-```javascript
-export function activate(api) {
+```typescript
+import type { ClientPluginAPI } from '../../../types/client';
+
+export function activate(api: ClientPluginAPI): void {
   // Plugin initialization
 }
 
-export function deactivate() {
+export function deactivate(): void {
   // Cleanup
 }
 ```
@@ -285,9 +291,9 @@ Show toast notifications.
 
 ## Client Plugin Dependencies
 
-Client plugins can access shared dependencies via `window.__mnemoPluginDeps`:
+Client plugins can access shared dependencies via `window.__mnemoPluginDeps` (typed in `types/client.d.ts`):
 
-```javascript
+```typescript
 const { React, vim, getCM } = window.__mnemoPluginDeps;
 const { createElement: h, useState, useEffect } = React;
 ```
@@ -326,15 +332,17 @@ A simple plugin that adds a status bar item showing the current time.
 }
 ```
 
-**client/index.js:**
-```javascript
+**client/index.ts:**
+```typescript
+import type { ClientPluginAPI } from '../../../types/client';
+
 const { React } = window.__mnemoPluginDeps;
 const { createElement: h, useState, useEffect } = React;
 
-let interval;
+let interval: ReturnType<typeof setInterval> | undefined;
 
-export function activate(api) {
-  function Clock() {
+export function activate(api: ClientPluginAPI): void {
+  function Clock(): any {
     const [time, setTime] = useState(new Date().toLocaleTimeString());
     useEffect(() => {
       interval = setInterval(() => {
@@ -352,7 +360,7 @@ export function activate(api) {
   });
 }
 
-export function deactivate() {
+export function deactivate(): void {
   if (interval) clearInterval(interval);
 }
 ```

@@ -108,17 +108,19 @@ for (const dir of pluginDirs) {
     error(`Plugin '${dir.name}' must declare at least one of 'server' or 'client' entry points`);
   }
 
-  // Check entry points exist on disk
+  // Check entry points exist on disk (TypeScript source or built JS)
   if (manifest.server) {
     const serverPath = path.join(pluginDir, manifest.server);
-    if (!fs.existsSync(serverPath)) {
-      error(`Server entry point not found: plugins/${dir.name}/${manifest.server}`);
+    const serverTsPath = serverPath.replace(/\.js$/, ".ts");
+    if (!fs.existsSync(serverPath) && !fs.existsSync(serverTsPath)) {
+      error(`Server entry point not found: plugins/${dir.name}/${manifest.server} (or .ts source)`);
     }
   }
   if (manifest.client) {
     const clientPath = path.join(pluginDir, manifest.client);
-    if (!fs.existsSync(clientPath)) {
-      error(`Client entry point not found: plugins/${dir.name}/${manifest.client}`);
+    const clientTsPath = clientPath.replace(/\.js$/, ".ts");
+    if (!fs.existsSync(clientPath) && !fs.existsSync(clientTsPath)) {
+      error(`Client entry point not found: plugins/${dir.name}/${manifest.client} (or .ts source)`);
     }
   }
 

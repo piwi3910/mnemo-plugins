@@ -4,13 +4,17 @@
   "private": true,
   "description": "Official plugin registry for Mnemo",
   "scripts": {
-    "lint": "eslint plugins/ --ext .js,.ts,.tsx",
-    "lint:fix": "eslint plugins/ --ext .js,.ts,.tsx --fix",
+    "build": "node scripts/build-plugins.js",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint plugins/ --ext .js",
+    "lint:fix": "eslint plugins/ --ext .js --fix",
     "generate": "node scripts/generate-registry.js",
     "validate": "node scripts/validate-registry.js",
     "test": "node scripts/test-plugins.js"
   },
   "devDependencies": {
-    "eslint": "^9.0.0"
+    "esbuild": "^0.25.0",
+    "eslint": "^9.0.0",
+    "typescript": "^5.9.0"
   }
 }
