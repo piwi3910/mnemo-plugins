@@ -113,19 +113,19 @@ function checkClientExports(filePath, label) {
 
 console.log("Testing plugins...\n");
 
-// Load registry to know which plugins to test
-const registry = JSON.parse(
-  fs.readFileSync(path.join(ROOT, "registry.json"), "utf-8")
-);
+// Scan plugins/ directory directly (registry.json is auto-generated)
+const pluginDirs = fs
+  .readdirSync(PLUGINS_DIR, { withFileTypes: true })
+  .filter((d) => d.isDirectory());
 
-for (const entry of registry.plugins) {
-  console.log(`Testing plugin: ${entry.id}`);
+for (const dir of pluginDirs) {
+  console.log(`Testing plugin: ${dir.name}`);
 
-  const pluginDir = path.join(PLUGINS_DIR, entry.id);
+  const pluginDir = path.join(PLUGINS_DIR, dir.name);
   const manifestPath = path.join(pluginDir, "manifest.json");
 
   if (!fs.existsSync(manifestPath)) {
-    error(`Missing manifest for ${entry.id}`);
+    error(`Missing manifest for ${dir.name}`);
     continue;
   }
 
@@ -134,7 +134,7 @@ for (const entry of registry.plugins) {
   // Test server entry point
   if (manifest.server) {
     const serverPath = path.join(pluginDir, manifest.server);
-    const label = `${entry.id}/server`;
+    const label = `${dir.name}/server`;
     const result = checkSyntax(serverPath, label);
     if (result.valid) {
       checkServerExports(serverPath, label);
@@ -144,7 +144,7 @@ for (const entry of registry.plugins) {
   // Test client entry point
   if (manifest.client) {
     const clientPath = path.join(pluginDir, manifest.client);
-    const label = `${entry.id}/client`;
+    const label = `${dir.name}/client`;
     const result = checkSyntax(clientPath, label);
     if (result.valid) {
       checkClientExports(clientPath, label);
