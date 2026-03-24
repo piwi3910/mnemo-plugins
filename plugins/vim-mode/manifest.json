@@ -5,6 +5,8 @@
   "description": "Adds Vim keybindings to the editor with visual mode indicator and command bar",
   "author": "Mnemo",
   "minMnemoVersion": "2.0.0",
+  "tags": ["editor", "keybindings"],
+  "icon": "terminal",
   "client": "client/index.js",
   "settings": [
     {

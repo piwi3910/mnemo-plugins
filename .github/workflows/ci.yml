@@ -28,3 +28,34 @@ jobs:
 
       - name: Test plugins
         run: npm run test
+
+  update-registry:
+    name: Update Registry Index
+    needs: validate
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+
+      - name: Generate registry.json from manifests
+        run: node scripts/generate-registry.js
+
+      - name: Commit and push registry.json
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -f registry.json
+          if git diff --cached --quiet; then
+            echo "registry.json is already up to date"
+          else
+            git commit -m "chore: auto-update registry.json from plugin manifests"
+            git push
+          fi
