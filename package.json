@@ -1,0 +1,15 @@
+{
+  "name": "mnemo-plugins",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Official plugin registry for Mnemo",
+  "scripts": {
+    "lint": "eslint plugins/ --ext .js,.ts,.tsx",
+    "lint:fix": "eslint plugins/ --ext .js,.ts,.tsx --fix",
+    "validate": "node scripts/validate-registry.js",
+    "test": "node scripts/test-plugins.js"
+  },
+  "devDependencies": {
+    "eslint": "^9.0.0"
+  }
+}

@@ -1,0 +1,30 @@
+name: Plugin CI
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+
+jobs:
+  validate:
+    name: Validate Plugins
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Lint plugins
+        run: npm run lint
+
+      - name: Validate registry
+        run: npm run validate
+
+      - name: Test plugins
+        run: npm run test
