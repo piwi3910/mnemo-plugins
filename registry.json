@@ -2,6 +2,74 @@
   "version": 1,
   "plugins": [
     {
+      "id": "advanced-tables",
+      "name": "Advanced Tables",
+      "description": "Improved table navigation, formatting, and manipulation for Markdown tables",
+      "author": "Mnemo",
+      "version": "1.0.0",
+      "minMnemoVersion": "2.0.0",
+      "tags": [
+        "editor",
+        "tables",
+        "markdown"
+      ],
+      "icon": "table"
+    },
+    {
+      "id": "calendar",
+      "name": "Calendar",
+      "description": "Monthly calendar widget for navigating and creating daily notes",
+      "author": "Mnemo",
+      "version": "1.0.0",
+      "minMnemoVersion": "2.0.0",
+      "tags": [
+        "navigation",
+        "daily-notes"
+      ],
+      "icon": "calendar"
+    },
+    {
+      "id": "checklist",
+      "name": "Checklist",
+      "description": "Aggregate and manage checklists across all your notes",
+      "author": "Mnemo",
+      "version": "1.0.0",
+      "minMnemoVersion": "2.0.0",
+      "tags": [
+        "productivity",
+        "tasks"
+      ],
+      "icon": "check-square"
+    },
+    {
+      "id": "dataview",
+      "name": "Dataview",
+      "description": "Query and display data from your notes using SQL-like syntax",
+      "author": "Mnemo",
+      "version": "1.0.0",
+      "minMnemoVersion": "2.0.0",
+      "tags": [
+        "data",
+        "queries",
+        "tables"
+      ],
+      "icon": "database"
+    },
+    {
+      "id": "git-backup",
+      "name": "Git Backup",
+      "description": "Automatic git backup with commit history and version control",
+      "author": "Mnemo",
+      "version": "1.0.0",
+      "minMnemoVersion": "2.0.0",
+      "tags": [
+        "backup",
+        "git",
+        "version-control"
+      ],
+      "icon": "git-branch"
+    },
+    {
       "id": "mermaid-diagrams",
       "name": "Mermaid Diagrams",
       "description": "Render Mermaid diagrams in code fences with live preview and theme support",
@@ -16,6 +84,32 @@
       "icon": "git-branch"
     },
     {
+      "id": "mind-map",
+      "name": "Mind Map",
+      "description": "Display Markdown notes as interactive mind maps using Markmap",
+      "author": "Mnemo",
+      "version": "1.0.0",
+      "minMnemoVersion": "2.0.0",
+      "tags": [
+        "visualization",
+        "diagrams"
+      ],
+      "icon": "brain"
+    },
+    {
+      "id": "recent-files",
+      "name": "Recent Files",
+      "description": "Display recently opened files for quick navigation",
+      "author": "Mnemo",
+      "version": "1.0.0",
+      "minMnemoVersion": "2.0.0",
+      "tags": [
+        "navigation",
+        "productivity"
+      ],
+      "icon": "clock"
+    },
+    {
       "id": "sample-wordcount",
       "name": "Word Count",
       "description": "Displays word count statistics for notes",
@@ -27,6 +121,45 @@
         "statistics"
       ],
       "icon": "hash"
+    },
+    {
+      "id": "tag-wrangler",
+      "name": "Tag Wrangler",
+      "description": "Rename, merge, and manage tags across all your notes",
+      "author": "Mnemo",
+      "version": "1.0.0",
+      "minMnemoVersion": "2.0.0",
+      "tags": [
+        "tags",
+        "organization"
+      ],
+      "icon": "tag"
+    },
+    {
+      "id": "templater",
+      "name": "Templater",
+      "description": "Advanced template system with dynamic variables and date formatting",
+      "author": "Mnemo",
+      "version": "1.0.0",
+      "minMnemoVersion": "2.0.0",
+      "tags": [
+        "templates",
+        "productivity"
+      ],
+      "icon": "file-text"
+    },
+    {
+      "id": "theme-settings",
+      "name": "Theme Settings",
+      "description": "Customize colors, fonts, and layout of Mnemo's interface",
+      "author": "Mnemo",
+      "version": "1.0.0",
+      "minMnemoVersion": "2.0.0",
+      "tags": [
+        "appearance",
+        "customization"
+      ],
+      "icon": "palette"
     },
     {
       "id": "vim-mode",
