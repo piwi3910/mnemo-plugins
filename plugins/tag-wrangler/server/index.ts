@@ -44,7 +44,8 @@ export function activate(api: PluginAPI): void {
       await Promise.all(
         paths.map(async (notePath) => {
           try {
-            const note = await api.notes.get(userId, notePath);
+            const logicalPath = notePath.replace(/\.md$/, '');
+            const note = await api.notes.get(userId, logicalPath);
             const matches = note.content.match(/#([\w-]+)/g);
             if (matches) {
               for (const match of matches) {
@@ -93,11 +94,12 @@ export function activate(api: PluginAPI): void {
       await Promise.all(
         paths.map(async (notePath) => {
           try {
-            const note = await api.notes.get(userId, notePath);
+            const logicalPath = notePath.replace(/\.md$/, '');
+            const note = await api.notes.get(userId, logicalPath);
             if (regex.test(note.content)) {
               regex.lastIndex = 0;
               const updated = note.content.replace(regex, `#${newTag}`);
-              await api.notes.update(userId, notePath, updated);
+              await api.notes.update(userId, logicalPath, updated);
               updatedCount++;
             }
           } catch {
@@ -137,11 +139,12 @@ export function activate(api: PluginAPI): void {
       await Promise.all(
         paths.map(async (notePath) => {
           try {
-            const note = await api.notes.get(userId, notePath);
+            const logicalPath = notePath.replace(/\.md$/, '');
+            const note = await api.notes.get(userId, logicalPath);
             if (regex.test(note.content)) {
               regex.lastIndex = 0;
               const updated = note.content.replace(regex, `#${targetTag}`);
-              await api.notes.update(userId, notePath, updated);
+              await api.notes.update(userId, logicalPath, updated);
               updatedCount++;
             }
           } catch {
@@ -181,12 +184,13 @@ export function activate(api: PluginAPI): void {
       await Promise.all(
         paths.map(async (notePath) => {
           try {
-            const note = await api.notes.get(userId, notePath);
+            const logicalPath = notePath.replace(/\.md$/, '');
+            const note = await api.notes.get(userId, logicalPath);
             if (regex.test(note.content)) {
               regex.lastIndex = 0;
               // Remove the tag and clean up any double-spaces left behind
               const updated = note.content.replace(regex, '').replace(/  +/g, ' ').trimEnd();
-              await api.notes.update(userId, notePath, updated);
+              await api.notes.update(userId, logicalPath, updated);
               updatedCount++;
             }
           } catch {

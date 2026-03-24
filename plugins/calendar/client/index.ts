@@ -51,7 +51,7 @@ export function activate(api: ClientPluginAPI): void {
     // Fetch existing daily notes on mount and when month changes
     useEffect(() => {
       api.api
-        .fetch(`/daily?year=${year}&month=${month + 1}`)
+        .fetch(`/dates?year=${year}&month=${month + 1}`)
         .then((res) => (res.ok ? res.json() : []))
         .then((dates: string[]) => {
           setExistingDates(new Set(Array.isArray(dates) ? dates : []));
@@ -77,7 +77,7 @@ export function activate(api: ClientPluginAPI): void {
 
     function handleDateClick(day: number): void {
       const dateStr = toISODate(year, month, day);
-      api.api.fetch(`/daily/${dateStr}`, { method: 'POST' }).catch(() => {});
+      api.api.fetch(`/open/${dateStr}`, { method: 'POST' }).catch(() => {});
     }
 
     const grid = buildGrid(year, month);

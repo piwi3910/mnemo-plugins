@@ -7,5 +7,6 @@
   "minMnemoVersion": "2.0.0",
   "tags": ["navigation", "daily-notes"],
   "icon": "calendar",
-  "client": "client/index.js"
+  "client": "client/index.js",
+  "server": "server/index.js"
 }

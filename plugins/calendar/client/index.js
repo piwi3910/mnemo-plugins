@@ -45,7 +45,7 @@ function activate(api) {
     const [existingDates, setExistingDates] = useState(/* @__PURE__ */ new Set());
     const todayStr = today();
     useEffect(() => {
-      api.api.fetch(`/daily?year=${year}&month=${month + 1}`).then((res) => res.ok ? res.json() : []).then((dates) => {
+      api.api.fetch(`/dates?year=${year}&month=${month + 1}`).then((res) => res.ok ? res.json() : []).then((dates) => {
         setExistingDates(new Set(Array.isArray(dates) ? dates : []));
       }).catch(() => {
       });
@@ -69,7 +69,7 @@ function activate(api) {
     }
     function handleDateClick(day) {
       const dateStr = toISODate(year, month, day);
-      api.api.fetch(`/daily/${dateStr}`, { method: "POST" }).catch(() => {
+      api.api.fetch(`/open/${dateStr}`, { method: "POST" }).catch(() => {
       });
     }
     const grid = buildGrid(year, month);

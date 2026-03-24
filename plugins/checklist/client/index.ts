@@ -50,9 +50,9 @@ export function activate(api: ClientPluginAPI): void {
       setLoading(true);
       setError(null);
 
-      // Search for notes containing unchecked boxes first, then also checked
+      // Fetch all notes that contain checkbox syntax from the plugin server route
       api.api
-        .fetch('/search?q=%2D+%5B+%5D')
+        .fetch('/notes')
         .then((res) => (res.ok ? res.json() : Promise.reject(new Error(`HTTP ${res.status}`))))
         .then((results: Array<{ path: string; content: string }>) => {
           if (!Array.isArray(results)) return [];

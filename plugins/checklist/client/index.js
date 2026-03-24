@@ -27,7 +27,7 @@ function activate(api) {
     const fetchChecklists = useCallback(() => {
       setLoading(true);
       setError(null);
-      api.api.fetch("/search?q=%2D+%5B+%5D").then((res) => res.ok ? res.json() : Promise.reject(new Error(`HTTP ${res.status}`))).then((results) => {
+      api.api.fetch("/notes").then((res) => res.ok ? res.json() : Promise.reject(new Error(`HTTP ${res.status}`))).then((results) => {
         if (!Array.isArray(results)) return [];
         return results.map((note) => ({
           path: note.path,
