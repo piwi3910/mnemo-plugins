@@ -1,0 +1,31 @@
+{
+  "version": 1,
+  "plugins": [
+    {
+      "id": "sample-wordcount",
+      "name": "Word Count",
+      "description": "Displays word count statistics for notes",
+      "author": "Mnemo",
+      "version": "1.0.0",
+      "minMnemoVersion": "2.0.0",
+      "tags": [
+        "utilities",
+        "statistics"
+      ],
+      "icon": "hash"
+    },
+    {
+      "id": "vim-mode",
+      "name": "Vim Mode",
+      "description": "Adds Vim keybindings to the editor with visual mode indicator and command bar",
+      "author": "Mnemo",
+      "version": "1.0.0",
+      "minMnemoVersion": "2.0.0",
+      "tags": [
+        "editor",
+        "keybindings"
+      ],
+      "icon": "terminal"
+    }
+  ]
+}
