@@ -3,7 +3,7 @@ import type { PluginAPI } from '../../../types/server';
 export function activate(api: PluginAPI): void {
   api.log.info("Word Count plugin activated");
 
-  api.routes.register("get", "/count/:userId/:notePath(*)", async (req, res) => {
+  api.routes.register("get", "/count/:userId/{*notePath}", async (req, res) => {
     try {
       const { userId, notePath } = req.params;
       const note = await api.notes.get(userId, notePath);
