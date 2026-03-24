@@ -48,3 +48,4 @@ declare global {
     __mnemoPluginDeps: MnemoPluginDeps;
   }
 }
+
