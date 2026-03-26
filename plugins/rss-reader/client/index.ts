@@ -89,7 +89,7 @@ function createRSSPanel(api: ClientPluginAPI): () => any {
         });
         if (resp.ok) {
           const data = await resp.json() as { feed: Feed };
-          setFeeds((prev) => [...prev, data.feed]);
+          setFeeds((prev: any) => [...prev, data.feed]);
           setAddUrl('');
           api.notify.success(`Added: ${data.feed.title}`);
         } else {
@@ -107,7 +107,7 @@ function createRSSPanel(api: ClientPluginAPI): () => any {
       try {
         const resp = await api.api.fetch(`/feeds/${feed.id}`, { method: 'DELETE' });
         if (resp.ok) {
-          setFeeds((prev) => prev.filter((f) => f.id !== feed.id));
+          setFeeds((prev: any) => prev.filter((f: any) => f.id !== feed.id));
           if (selectedFeed?.id === feed.id) {
             setSelectedFeed(null);
             setItems([]);
@@ -203,7 +203,7 @@ function createRSSPanel(api: ClientPluginAPI): () => any {
               : items.length === 0
               ? h('div', { style: { padding: '20px', textAlign: 'center', color: 'var(--color-muted, #888)', fontSize: '12px' } }, 'No items found')
               : h('ul', { style: { flex: 1, overflowY: 'auto', margin: 0, padding: 0, listStyle: 'none' } },
-                  items.map((item, idx) =>
+                  items.map((item: any, idx: number) =>
                     h('li', {
                       key: `${item.link}-${idx}`,
                       style: {
@@ -260,7 +260,7 @@ function createRSSPanel(api: ClientPluginAPI): () => any {
                   'No feeds yet. Add an RSS/Atom feed URL above.'
                 )
               : h('ul', { style: { flex: 1, overflowY: 'auto', margin: 0, padding: 0, listStyle: 'none' } },
-                  feeds.map((feed) =>
+                  feeds.map((feed: any) =>
                     h('li', {
                       key: feed.id,
                       style: {

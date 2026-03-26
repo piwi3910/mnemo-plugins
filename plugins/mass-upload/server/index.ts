@@ -202,7 +202,7 @@ export function createHandlers(api: PluginAPI, sessionStore: SessionStore) {
         return;
       }
 
-      const { sessionId } = req.params;
+      const sessionId = Array.isArray(req.params.sessionId) ? req.params.sessionId[0] : req.params.sessionId;
       const deleted = await sessionStore.delete(sessionId, userId);
       if (!deleted) {
         res.status(404).json({ error: "Session not found" });

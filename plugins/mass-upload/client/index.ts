@@ -1,7 +1,14 @@
 import type { ClientPluginAPI } from '../../../types/client';
 
 const { React } = (window as any).__mnemoPluginDeps;
-const { createElement: h, useState, useRef, useCallback } = React;
+const {
+  createElement: h,
+  useState: _useState,
+  useRef: _useRef,
+  useCallback,
+} = React;
+const useState = _useState as <T>(init: T | (() => T)) => [T, (v: T | ((prev: T) => T)) => void];
+const useRef = _useRef as <T>(init: T | null) => { current: T | null };
 
 // ─── Types ───────────────────────────────────────────────────────────────────
 
@@ -247,9 +254,9 @@ function StepSelect({
     const mdFiles = Array.from(incoming).filter((f) =>
       f.name.toLowerCase().endsWith('.md'),
     );
-    setFiles((prev) => {
-      const existing = new Set(prev.map((f) => f.name + f.size));
-      const fresh = mdFiles.filter((f) => !existing.has(f.name + f.size));
+    setFiles((prev: File[]) => {
+      const existing = new Set(prev.map((f: File) => f.name + f.size));
+      const fresh = mdFiles.filter((f: File) => !existing.has(f.name + f.size));
       return [...prev, ...fresh];
     });
   }, []);
@@ -278,7 +285,7 @@ function StepSelect({
     setLoading(true);
     try {
       const formData = new FormData();
-      files.forEach((f) => formData.append('files', f));
+      files.forEach((f: File) => formData.append('files', f));
       const params = new URLSearchParams();
       if (targetFolder.trim()) params.set('targetFolder', targetFolder.trim());
       params.set('preserveStructure', String(preserveStructure));
@@ -335,7 +342,7 @@ function StepSelect({
     // Selected files list
     files.length > 0 && h('div', { style: S.fileList },
       `${files.length} file(s) selected:`,
-      files.map((f, i) =>
+      files.map((f: File, i: number) =>
         h('div', { key: i, style: { marginTop: 2 } }, f.name),
       ),
     ),
@@ -506,7 +513,7 @@ function StepReview({
                       style: S.select,
                       value: actions[f.index] ?? 'skip',
                       onChange: (e: any) =>
-                        setActions((prev) => ({
+                        setActions((prev: Record<number, FileAction>) => ({
                           ...prev,
                           [f.index]: e.target.value as FileAction,
                         })),

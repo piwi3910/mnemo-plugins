@@ -279,7 +279,7 @@ function createMetricsPanel(api: ClientPluginAPI): () => any {
             h('ul', {
               style: { margin: 0, padding: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '3px' },
             },
-              stats.topTags.map((t) => {
+              stats.topTags.map((t: any) => {
                 const maxCount = stats.topTags[0]?.count ?? 1;
                 const pct = Math.round((t.count / maxCount) * 100);
                 return h('li', {

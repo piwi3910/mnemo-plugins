@@ -65,16 +65,16 @@ function createFlashcardModal(api: ClientPluginAPI): (notePath: string) => void 
       const handleKeyDown = useCallback((e: KeyboardEvent) => {
         if (e.key === 'Escape') { cleanup(); return; }
         if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
-          setIndex((i) => Math.min(i + 1, cards.length - 1));
+          setIndex((i: number) => Math.min(i + 1, cards.length - 1));
           setRevealed(false);
         }
         if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
-          setIndex((i) => Math.max(i - 1, 0));
+          setIndex((i: number) => Math.max(i - 1, 0));
           setRevealed(false);
         }
         if (e.key === ' ') {
           e.preventDefault();
-          setRevealed((r) => !r);
+          setRevealed((r: boolean) => !r);
         }
       }, [cards.length]);
 
@@ -163,13 +163,13 @@ function createFlashcardModal(api: ClientPluginAPI): (notePath: string) => void 
                 h('button', {
                   style: s.navBtn(index === 0),
                   disabled: index === 0,
-                  onClick: () => { setIndex((i) => i - 1); setRevealed(false); },
+                  onClick: () => { setIndex((i: number) => i - 1); setRevealed(false); },
                 }, '← Prev'),
                 h('span', { style: s.counter }, `${index + 1} of ${cards.length}`),
                 h('button', {
                   style: s.navBtn(index === cards.length - 1),
                   disabled: index === cards.length - 1,
-                  onClick: () => { setIndex((i) => i + 1); setRevealed(false); },
+                  onClick: () => { setIndex((i: number) => i + 1); setRevealed(false); },
                 }, 'Next →')
               )
             )

@@ -128,10 +128,10 @@ function SlashMenu(props: MenuProps): any {
     function handleKey(e: KeyboardEvent): void {
       if (e.key === 'ArrowDown') {
         e.preventDefault();
-        setActiveIndex((i) => (i + 1) % Math.max(filtered.length, 1));
+        setActiveIndex((i: number) => (i + 1) % Math.max(filtered.length, 1));
       } else if (e.key === 'ArrowUp') {
         e.preventDefault();
-        setActiveIndex((i) => (i - 1 + Math.max(filtered.length, 1)) % Math.max(filtered.length, 1));
+        setActiveIndex((i: number) => (i - 1 + Math.max(filtered.length, 1)) % Math.max(filtered.length, 1));
       } else if (e.key === 'Enter') {
         e.preventDefault();
         if (filtered[activeIndex]) onSelect(filtered[activeIndex]);

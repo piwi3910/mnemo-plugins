@@ -82,7 +82,7 @@ function createReadingListPanel(api: ClientPluginAPI): () => any {
         });
         if (resp.ok) {
           const data = await resp.json() as { item: ReadingItem };
-          setItems((prev) => [data.item, ...prev]);
+          setItems((prev: any) => [data.item, ...prev]);
           setAddUrl('');
           setAddTitle('');
         } else {
@@ -104,7 +104,7 @@ function createReadingListPanel(api: ClientPluginAPI): () => any {
         });
         if (resp.ok) {
           const data = await resp.json() as { item: ReadingItem };
-          setItems((prev) => prev.map((i) => (i.id === item.id ? data.item : i)));
+          setItems((prev: any) => prev.map((i: any) => (i.id === item.id ? data.item : i)));
         }
       } catch {
         api.notify.error('Failed to update item');
@@ -115,7 +115,7 @@ function createReadingListPanel(api: ClientPluginAPI): () => any {
       try {
         const resp = await api.api.fetch(`/items/${id}`, { method: 'DELETE' });
         if (resp.ok) {
-          setItems((prev) => prev.filter((i) => i.id !== id));
+          setItems((prev: any) => prev.filter((i: any) => i.id !== id));
         } else {
           api.notify.error('Failed to delete item');
         }
@@ -124,7 +124,7 @@ function createReadingListPanel(api: ClientPluginAPI): () => any {
       }
     }
 
-    const filtered = items.filter((item) => {
+    const filtered = items.filter((item: any) => {
       if (filter === 'unread') return !item.read;
       if (filter === 'read') return item.read;
       return true;
@@ -262,7 +262,7 @@ function createReadingListPanel(api: ClientPluginAPI): () => any {
               listStyle: 'none',
             },
           },
-            filtered.map((item) =>
+            filtered.map((item: any) =>
               h('li', {
                 key: item.id,
                 style: {

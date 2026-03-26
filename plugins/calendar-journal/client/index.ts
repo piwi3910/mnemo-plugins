@@ -165,7 +165,7 @@ function createJournalPanel(api: ClientPluginAPI): () => any {
             `No journal entries for ${MONTH_NAMES[month - 1]} ${year}.`
           )
         : h('div', { style: s.list },
-            entries.map((entry) =>
+            entries.map((entry: any) =>
               h('div', {
                 key: entry.date,
                 style: s.entryItem,

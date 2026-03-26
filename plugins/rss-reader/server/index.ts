@@ -52,7 +52,7 @@ function fetchUrl(url: string): Promise<string> {
       timeout: 10000,
     };
 
-    const req = lib.get(options as any, (resp) => {
+    const req = lib.get(options as any, (resp: import('http').IncomingMessage) => {
       // Handle redirects
       if (resp.statusCode && resp.statusCode >= 300 && resp.statusCode < 400 && resp.headers.location) {
         fetchUrl(resp.headers.location).then(resolve).catch(reject);
