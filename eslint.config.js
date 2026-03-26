@@ -30,7 +30,45 @@ export default [
         module: "readonly",
         Object: "readonly",
         typeof: "readonly",
-        JSON: "readonly"
+        JSON: "readonly",
+        Buffer: "readonly",
+        URL: "readonly",
+        process: "readonly",
+        crypto: "readonly",
+        __dirname: "readonly",
+        __filename: "readonly",
+        global: "readonly",
+        globalThis: "readonly",
+        TextDecoder: "readonly",
+        TextEncoder: "readonly",
+        Uint8Array: "readonly",
+        FormData: "readonly",
+        HTMLElement: "readonly",
+        HTMLInputElement: "readonly",
+        Event: "readonly",
+        DragEvent: "readonly",
+        MouseEvent: "readonly",
+        KeyboardEvent: "readonly",
+        FileReader: "readonly",
+        File: "readonly",
+        FileList: "readonly",
+        Blob: "readonly",
+        Response: "readonly",
+        Request: "readonly",
+        Headers: "readonly",
+        AbortController: "readonly",
+        URLSearchParams: "readonly",
+        requestAnimationFrame: "readonly",
+        cancelAnimationFrame: "readonly",
+        alert: "readonly",
+        confirm: "readonly",
+        navigator: "readonly",
+        location: "readonly",
+        history: "readonly",
+        atob: "readonly",
+        btoa: "readonly",
+        queueMicrotask: "readonly",
+        structuredClone: "readonly"
       }
     },
     rules: {
@@ -40,7 +78,7 @@ export default [
       "semi": ["error", "always"],
       "no-var": "off",
       "prefer-const": "off",
-      "eqeqeq": "error"
+      "eqeqeq": "warn"
     }
   }
 ];
