@@ -1,0 +1,12 @@
+{
+  "id": "rss-reader",
+  "name": "RSS Reader",
+  "version": "1.0.0",
+  "description": "Subscribe to RSS feeds and clip articles as notes",
+  "author": "Mnemo",
+  "minMnemoVersion": "2.0.0",
+  "tags": ["rss", "web", "productivity"],
+  "icon": "rss",
+  "client": "client/index.js",
+  "server": "server/index.js"
+}
