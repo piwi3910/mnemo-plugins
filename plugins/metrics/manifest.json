@@ -1,0 +1,12 @@
+{
+  "id": "metrics",
+  "name": "Writing Metrics",
+  "version": "1.0.0",
+  "description": "Writing statistics dashboard showing note counts, word totals, top tags, and daily trends",
+  "author": "Mnemo",
+  "minMnemoVersion": "2.0.0",
+  "tags": ["statistics", "productivity", "analytics"],
+  "icon": "bar-chart-2",
+  "server": "server/index.js",
+  "client": "client/index.js"
+}
