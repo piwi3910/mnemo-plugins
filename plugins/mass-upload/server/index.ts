@@ -119,9 +119,9 @@ export function createHandlers(api: PluginAPI, sessionStore: SessionStore) {
           return;
         }
 
-        const { sessionId, actions } = req.body as {
+        const { sessionId, files: actions } = req.body as {
           sessionId?: string;
-          actions?: Array<{ index: number; action: "create" | "overwrite" | "skip" }>;
+          files?: Array<{ index: number; action: "create" | "overwrite" | "skip" }>;
         };
 
         if (!sessionId) {
@@ -135,8 +135,8 @@ export function createHandlers(api: PluginAPI, sessionStore: SessionStore) {
           return;
         }
 
-        const created: string[] = [];
-        const overwritten: string[] = [];
+        let created = 0;
+        let overwritten = 0;
         const errors: Array<{ index: number; error: string }> = [];
 
         const fileActions = actions ?? [];
@@ -166,10 +166,10 @@ export function createHandlers(api: PluginAPI, sessionStore: SessionStore) {
           try {
             if (action.action === "create") {
               await api.notes.create(userId, fileEntry.resolvedPath, content);
-              created.push(fileEntry.resolvedPath);
+              created++;
             } else if (action.action === "overwrite") {
               await api.notes.update(userId, fileEntry.resolvedPath, content);
-              overwritten.push(fileEntry.resolvedPath);
+              overwritten++;
             }
           } catch (noteErr: any) {
             errors.push({
