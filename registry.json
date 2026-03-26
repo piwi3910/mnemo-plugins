@@ -70,6 +70,19 @@
       "icon": "git-branch"
     },
     {
+      "id": "mass-upload",
+      "name": "Mass Upload",
+      "description": "Bulk import .md files with validation and duplicate detection",
+      "author": "Mnemo",
+      "version": "1.0.0",
+      "minMnemoVersion": "3.0.0",
+      "tags": [
+        "import",
+        "productivity"
+      ],
+      "icon": "upload"
+    },
+    {
       "id": "mermaid-diagrams",
       "name": "Mermaid Diagrams",
       "description": "Render Mermaid diagrams in code fences with live preview and theme support",
