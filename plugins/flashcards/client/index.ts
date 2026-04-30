@@ -1,6 +1,6 @@
 import type { ClientPluginAPI } from '../../../types/client';
 
-const { React } = window.__mnemoPluginDeps;
+const { React } = window.__krytonPluginDeps;
 const { createElement: h, useState, useEffect, useCallback } = React;
 
 interface Flashcard {
@@ -42,7 +42,7 @@ function createFlashcardModal(api: ClientPluginAPI): (notePath: string) => void 
     }
 
     // Mount a React component into the container
-    const { ReactDOM } = window.__mnemoPluginDeps as any;
+    const { ReactDOM } = window.__krytonPluginDeps as any;
 
     function FlashcardsApp(): any {
       const [cards, setCards] = useState<Flashcard[]>([]);

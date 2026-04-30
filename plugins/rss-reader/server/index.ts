@@ -46,7 +46,7 @@ function fetchUrl(url: string): Promise<string> {
       path: parsed.pathname + parsed.search,
       port: parsed.port || (parsed.protocol === 'https:' ? 443 : 80),
       headers: {
-        'User-Agent': 'Mnemo RSS Reader/1.0',
+        'User-Agent': 'Kryton RSS Reader/1.0',
         'Accept': 'application/rss+xml, application/atom+xml, application/xml, text/xml, */*',
       },
       timeout: 10000,

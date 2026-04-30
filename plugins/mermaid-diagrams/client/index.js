@@ -1,4 +1,4 @@
-const { React } = window.__mnemoPluginDeps;
+const { React } = window.__krytonPluginDeps;
 const { createElement: h, useState, useEffect, useRef, useCallback } = React;
 let mermaidInstance = null;
 let mermaidLoading = false;

@@ -1,6 +1,6 @@
-# Contributing to Mnemo Plugins
+# Contributing to Kryton Plugins
 
-Thank you for your interest in contributing plugins to Mnemo! This guide covers how to add a new plugin to the registry.
+Thank you for your interest in contributing plugins to Kryton! This guide covers how to add a new plugin to the registry.
 
 ## Prerequisites
 
@@ -13,8 +13,8 @@ Thank you for your interest in contributing plugins to Mnemo! This guide covers 
 
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/azrtydxb/mnemo-plugins.git
-   cd mnemo-plugins
+   git clone https://github.com/azrtydxb/kryton-plugins.git
+   cd kryton-plugins
    npm install
    ```
 
@@ -60,7 +60,7 @@ All manifests must include these fields:
 | `version` | Semver version (must match the version in `registry.json`) |
 | `description` | Brief description |
 | `author` | Your name |
-| `minMnemoVersion` | Minimum Mnemo version required |
+| `minKrytonVersion` | Minimum Kryton version required |
 
 At least one of `server` or `client` entry points must be declared.
 
@@ -139,7 +139,7 @@ Pull requests are evaluated on:
 - **Quality**: Clean code, follows style guidelines
 - **Documentation**: Manifest has accurate description and settings
 - **Security**: No access to data outside the plugin's scope
-- **Compatibility**: Correct `minMnemoVersion` specified
+- **Compatibility**: Correct `minKrytonVersion` specified
 
 ## Questions?
 

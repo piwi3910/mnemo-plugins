@@ -1,9 +1,9 @@
 import type { ClientPluginAPI } from '../../../types/client';
 
-const { React } = window.__mnemoPluginDeps;
+const { React } = window.__krytonPluginDeps;
 const { createElement: h, useState, useEffect } = React;
 
-const STYLE_ELEMENT_ID = 'mnemo-theme-settings-styles';
+const STYLE_ELEMENT_ID = 'kryton-theme-settings-styles';
 
 /** Build the CSS string from the current settings values. */
 function buildStyles(
@@ -14,7 +14,7 @@ function buildStyles(
   contentWidth: number,
 ): string {
   return `
-/* Mnemo Theme Settings plugin */
+/* Kryton Theme Settings plugin */
 :root {
   --accent-color: ${accentColor};
 }

@@ -1,6 +1,6 @@
 import type { ClientPluginAPI } from "../../../types/client";
 
-const { React } = window.__mnemoPluginDeps;
+const { React } = window.__krytonPluginDeps;
 const { createElement: h, useState, useEffect, useRef, useCallback } = React;
 
 // Mermaid is loaded dynamically from CDN to avoid bundling ~2MB

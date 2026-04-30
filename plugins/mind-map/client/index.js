@@ -1,4 +1,4 @@
-const { React } = window.__mnemoPluginDeps;
+const { React } = window.__krytonPluginDeps;
 const { createElement: h, useState, useEffect, useRef } = React;
 let markmapLib = null;
 let markmapLoading = false;

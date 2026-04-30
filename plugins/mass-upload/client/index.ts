@@ -1,6 +1,6 @@
 import type { ClientPluginAPI } from '../../../types/client';
 
-const { React } = (window as any).__mnemoPluginDeps;
+const { React } = (window as any).__krytonPluginDeps;
 const {
   createElement: h,
   useState: _useState,

@@ -1,4 +1,4 @@
-const { React, vim, getCM } = window.__mnemoPluginDeps;
+const { React, vim, getCM } = window.__krytonPluginDeps;
 const { createElement: h, useState, useEffect } = React;
 function getVimMode(view) {
   const cm = getCM(view);

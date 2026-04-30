@@ -1,6 +1,6 @@
 import type { ClientPluginAPI } from '../../../types/client';
 
-const { React } = window.__mnemoPluginDeps;
+const { React } = window.__krytonPluginDeps;
 const { createElement: h, useState, useEffect, useCallback } = React;
 
 interface ReadingItem {
@@ -28,7 +28,7 @@ function ReadingListPanel(): any {
   const fetchItems = useCallback(async () => {
     setLoading(true);
     try {
-      const resp = await (window as any).__mnemoPluginAPI?.api?.fetch('/items') as Response | undefined;
+      const resp = await (window as any).__krytonPluginAPI?.api?.fetch('/items') as Response | undefined;
       // fetchItems is called with the injected api — see below
     } catch {
       // ignore

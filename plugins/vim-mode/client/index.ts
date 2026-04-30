@@ -1,6 +1,6 @@
 import type { ClientPluginAPI } from '../../../types/client';
 
-const { React, vim, getCM } = window.__mnemoPluginDeps;
+const { React, vim, getCM } = window.__krytonPluginDeps;
 const { createElement: h, useState, useEffect } = React;
 
 /** Determine the current vim mode string from the editor view. */

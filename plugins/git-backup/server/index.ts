@@ -31,7 +31,7 @@ function runGit(args: string, cwd: string): Promise<string> {
 
 /** Resolve the notes root directory from the plugin's dataDir.
  *
- * Convention: plugin data lives at <notesRoot>/.mnemo/plugins/<pluginId>/
+ * Convention: plugin data lives at <notesRoot>/.kryton/plugins/<pluginId>/
  * We walk up three levels to reach the notes root.
  */
 function resolveNotesDir(dataDir: string): string {

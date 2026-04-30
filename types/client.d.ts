@@ -36,8 +36,8 @@ export interface ClientPluginAPI {
   };
 }
 
-// Host dependencies available via window.__mnemoPluginDeps
-export interface MnemoPluginDeps {
+// Host dependencies available via window.__krytonPluginDeps
+export interface KrytonPluginDeps {
   React: typeof import("react");
   vim: () => any;
   getCM: (view: any) => any;
@@ -45,7 +45,7 @@ export interface MnemoPluginDeps {
 
 declare global {
   interface Window {
-    __mnemoPluginDeps: MnemoPluginDeps;
+    __krytonPluginDeps: KrytonPluginDeps;
   }
 }
 

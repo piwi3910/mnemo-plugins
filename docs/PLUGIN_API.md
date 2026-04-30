@@ -1,6 +1,6 @@
-# Mnemo Plugin API Reference
+# Kryton Plugin API Reference
 
-This guide covers everything you need to build plugins for Mnemo.
+This guide covers everything you need to build plugins for Kryton.
 
 ## Plugin Structure
 
@@ -32,7 +32,7 @@ The `manifest.json` file describes your plugin:
   "version": "1.0.0",
   "description": "What this plugin does",
   "author": "Your Name",
-  "minMnemoVersion": "2.0.0",
+  "minKrytonVersion": "2.0.0",
   "server": "server/index.js",
   "client": "client/index.js",
   "settings": [
@@ -56,7 +56,7 @@ The `manifest.json` file describes your plugin:
 | `version` | string | Semver version string |
 | `description` | string | Brief description of what the plugin does |
 | `author` | string | Plugin author name |
-| `minMnemoVersion` | string | Minimum Mnemo version required |
+| `minKrytonVersion` | string | Minimum Kryton version required |
 
 ### Optional Fields
 
@@ -230,7 +230,7 @@ Extend the CodeMirror editor.
 
 ```javascript
 // Example: add vim keybindings
-const { vim } = window.__mnemoPluginDeps;
+const { vim } = window.__krytonPluginDeps;
 api.editor.registerExtension(vim());
 ```
 
@@ -271,7 +271,7 @@ Access app context and plugin settings from React components.
 
 ### `api.api`
 
-Make authenticated API calls to the Mnemo backend.
+Make authenticated API calls to the Kryton backend.
 
 | Method | Description |
 |--------|-------------|
@@ -291,10 +291,10 @@ Show toast notifications.
 
 ## Client Plugin Dependencies
 
-Client plugins can access shared dependencies via `window.__mnemoPluginDeps` (typed in `types/client.d.ts`):
+Client plugins can access shared dependencies via `window.__krytonPluginDeps` (typed in `types/client.d.ts`):
 
 ```typescript
-const { React, vim, getCM } = window.__mnemoPluginDeps;
+const { React, vim, getCM } = window.__krytonPluginDeps;
 const { createElement: h, useState, useEffect } = React;
 ```
 
@@ -307,7 +307,7 @@ Available dependencies:
 
 ## Lifecycle
 
-1. **Install**: Plugin files are copied to the Mnemo server's plugin directory
+1. **Install**: Plugin files are copied to the Kryton server's plugin directory
 2. **Activate**: `activate(api)` is called with the plugin API
 3. **Runtime**: Plugin is active, handling events and rendering UI
 4. **Deactivate**: `deactivate()` is called during shutdown or uninstall
@@ -327,7 +327,7 @@ A simple plugin that adds a status bar item showing the current time.
   "version": "1.0.0",
   "description": "Shows current time in the status bar",
   "author": "Example",
-  "minMnemoVersion": "2.0.0",
+  "minKrytonVersion": "2.0.0",
   "client": "client/index.js"
 }
 ```
@@ -336,7 +336,7 @@ A simple plugin that adds a status bar item showing the current time.
 ```typescript
 import type { ClientPluginAPI } from '../../../types/client';
 
-const { React } = window.__mnemoPluginDeps;
+const { React } = window.__krytonPluginDeps;
 const { createElement: h, useState, useEffect } = React;
 
 let interval: ReturnType<typeof setInterval> | undefined;

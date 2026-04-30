@@ -1,4 +1,4 @@
-const { React } = window.__mnemoPluginDeps;
+const { React } = window.__krytonPluginDeps;
 const { createElement: h } = React;
 function parseTable(text) {
   const lines = text.split("\n").filter((l) => l.trim().startsWith("|"));

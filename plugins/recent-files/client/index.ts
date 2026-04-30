@@ -1,9 +1,9 @@
 import type { ClientPluginAPI } from '../../../types/client';
 
-const { React } = window.__mnemoPluginDeps;
+const { React } = window.__krytonPluginDeps;
 const { createElement: h, useState, useEffect, useCallback } = React;
 
-const STORAGE_PREFIX = 'mnemo-recent-files-';
+const STORAGE_PREFIX = 'kryton-recent-files-';
 
 function storageKey(userId: string): string {
   return `${STORAGE_PREFIX}${userId}`;

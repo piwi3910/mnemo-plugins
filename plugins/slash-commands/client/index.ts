@@ -1,6 +1,6 @@
 import type { ClientPluginAPI } from '../../../types/client';
 
-const { React } = window.__mnemoPluginDeps;
+const { React } = window.__krytonPluginDeps;
 const { createElement: h, useState, useEffect, useRef } = React;
 
 // ---------------------------------------------------------------------------
@@ -238,7 +238,7 @@ export function activate(api: ClientPluginAPI): void {
     if (!mountPoint) return;
     if (!menuState.visible) {
       // Use React 18 createRoot if available, else fallback
-      const ReactDOM = (window as any).__mnemoPluginDeps?.ReactDOM;
+      const ReactDOM = (window as any).__krytonPluginDeps?.ReactDOM;
       if (ReactDOM?.createRoot) {
         // We'll just unmount by rendering null
       }
@@ -259,7 +259,7 @@ export function activate(api: ClientPluginAPI): void {
     });
 
     // Use simple innerHTML approach via createRoot or legacy render
-    const ReactDOM = (window as any).__mnemoPluginDeps?.ReactDOM;
+    const ReactDOM = (window as any).__krytonPluginDeps?.ReactDOM;
     if (ReactDOM) {
       if (ReactDOM.createRoot) {
         if (!(mountPoint as any)._root) {
@@ -352,7 +352,7 @@ export function activate(api: ClientPluginAPI): void {
 
   (activate as any)._cleanup = () => {
     if (mountPoint) {
-      const ReactDOM = (window as any).__mnemoPluginDeps?.ReactDOM;
+      const ReactDOM = (window as any).__krytonPluginDeps?.ReactDOM;
       if (ReactDOM) {
         if ((mountPoint as any)._root) {
           (mountPoint as any)._root.unmount();
@@ -375,7 +375,7 @@ function buildSlashExtension(
   // Return a CodeMirror 6 Extension — specifically a ViewPlugin
   // We access the CodeMirror API through the global if available,
   // otherwise we build a lightweight DOM-event-based fallback.
-  const CM = (window as any).__mnemoPluginDeps?.CM6;
+  const CM = (window as any).__krytonPluginDeps?.CM6;
 
   if (CM?.ViewPlugin) {
     return CM.ViewPlugin.fromClass(

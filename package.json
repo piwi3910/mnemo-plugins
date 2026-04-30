@@ -1,8 +1,8 @@
 {
-  "name": "mnemo-plugins",
+  "name": "kryton-plugins",
   "version": "1.0.0",
   "private": true,
-  "description": "Official plugin registry for Mnemo",
+  "description": "Official plugin registry for Kryton",
   "scripts": {
     "build": "node scripts/build-plugins.js",
     "typecheck": "tsc --noEmit",
