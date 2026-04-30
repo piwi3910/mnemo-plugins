@@ -13,7 +13,7 @@ Thank you for your interest in contributing plugins to Mnemo! This guide covers 
 
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/piwi3910/mnemo-plugins.git
+   git clone https://github.com/azrtydxb/mnemo-plugins.git
    cd mnemo-plugins
    npm install
    ```

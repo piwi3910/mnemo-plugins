@@ -1,8 +1,8 @@
 # Mnemo Plugins
 
-[![Plugin CI](https://github.com/piwi3910/mnemo-plugins/actions/workflows/ci.yml/badge.svg)](https://github.com/piwi3910/mnemo-plugins/actions/workflows/ci.yml)
+[![Plugin CI](https://github.com/azrtydxb/mnemo-plugins/actions/workflows/ci.yml/badge.svg)](https://github.com/azrtydxb/mnemo-plugins/actions/workflows/ci.yml)
 
-Official plugin registry for [Mnemo](https://github.com/piwi3910/mnemo), a self-hosted knowledge base.
+Official plugin registry for [Mnemo](https://github.com/azrtydxb/mnemo), a self-hosted knowledge base.
 
 ## Available Plugins
 
